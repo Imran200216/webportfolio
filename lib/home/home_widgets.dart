@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:webportfolio/constants/colors.dart';
+import 'package:webportfolio/widgets/custom_sizedbox.dart';
 import 'package:webportfolio/widgets/custom_text_btn.dart';
-
 import 'home_web.dart';
 
-final homeHeroCounter = StateProvider<int>((ref){
+final homeHeroCounter = StateProvider<int>((ref) {
   return 0;
 });
 
@@ -16,7 +15,11 @@ class HomeWidgets {
     List<String> navItems = ['Home', 'Projects', 'Contact'];
 
     void scrollToSection(GlobalKey key) {
-      Scrollable.ensureVisible(key.currentContext!, duration: const Duration(seconds: 1,) , curve: Curves.linear);
+      Scrollable.ensureVisible(key.currentContext!,
+          duration: const Duration(
+            seconds: 1,
+          ),
+          curve: Curves.linear);
     }
 
     return Builder(builder: (context) {
@@ -36,6 +39,8 @@ class HomeWidgets {
                 ),
               ),
 
+              sWidth(10),
+
               /// text
               Text(
                 "MR DEV",
@@ -54,9 +59,9 @@ class HomeWidgets {
                 CustomTextBtn(
                   onTap: () {
                     GlobalKey key = GlobalKey();
-                    if(item.toLowerCase() == 'home') {
+                    if (item.toLowerCase() == 'home') {
                       key = key1;
-                    }else if(item.toLowerCase() == 'projects') {
+                    } else if (item.toLowerCase() == 'projects') {
                       key = key2;
                     } else {
                       key = key3;
